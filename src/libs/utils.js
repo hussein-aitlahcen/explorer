@@ -205,6 +205,10 @@ export function consensusPubkeyToHexAddress(consensusPubkey) {
       raw = toHex(sha256(fromBase64(consensusPubkey.key))).slice(0, 40).toUpperCase()
       return raw
     }
+    if (consensusPubkey['@type'] === '/cosmos.crypto.bn254.PubKey') {
+      raw = toHex(sha256(fromBase64(consensusPubkey.key))).slice(0, 40).toUpperCase()
+      return raw
+    }
     // /cosmos.crypto.secp256k1.PubKey
     if (consensusPubkey['@type'] === '/cosmos.crypto.secp256k1.PubKey') {
       raw = new RIPEMD160().update(Buffer.from(sha256(fromBase64(consensusPubkey.key)))).digest('hex')

@@ -132,7 +132,7 @@ export default {
       this.blocks.push(res)
       const list = []
       const { height } = res.block.header
-      for (let i = 1; i < 10; i += 1) {
+      for (let i = 1; i < 20; i += 1) {
         list.push(height - i)
       }
 
@@ -152,7 +152,7 @@ export default {
           })
         }))
       })
-      this.timer = setInterval(this.fetch, 6000)
+      this.timer = setInterval(this.fetch, 3000)
     })
   },
   beforeDestroy() {
